@@ -8,18 +8,18 @@ This script solve this problem:
 
 The idea is to extract the whole commits log via the `git` command (you should have it on your machine) and process it to have:
 
-- the list off the file ever existed in this branch
-- the list of allsthe commit (at this stage we use the short SHA-1)
+- the list of all files that ever existed in this branch
+- the list of all commits (at this stage we use the short SHA-1 hash)
 
-# Example
+# Examples
 
-The notebook and the python script included ([git_history_test_git.ipynb](https://github.com/kidpixo/git_history_visualizer/blob/master/git_history_test_git.ipynb) and [git_history_test_git.py](https://github.com/kidpixo/git_history_visualizer/blob/master/git_history_test_git.py)) are just example. 
+The notebook and the python script included in this repo,  ([git_history_test_git.ipynb](https://github.com/kidpixo/git_history_visualizer/blob/master/git_history_test_git.ipynb) and [git_history_test_git.py](https://github.com/kidpixo/git_history_visualizer/blob/master/git_history_test_git.py)) are just an example.
 
-Change the path at the beginning with your repository path and play with the visualizzation at the end.
+Replace the value of ''path'' variable at the beginning of the Python script with your repository's path and play with visualization options at the end.
 
-This example is on this very repository. The first `*txt` files were only placeholders.
+This example is on this very repository, the first `*txt` files were just placeholders.
 
-This is the complete visual history of this repository using
+This is the complete visual history of this repository:
 
 ```python
 plot_history_df(all_filenames)
@@ -28,7 +28,7 @@ plot_history_df(all_filenames)
 ![](images/complete_visual_history.png)
 
 
-This is a commit range, using Python Data Analysis Library ([pandas](http://pandas.pydata.org/) using
+This is a commit range, using Python Data Analysis Library ([pandas](http://pandas.pydata.org/):
 
 ```python
 plot_df_commit_range = all_filenames.ix[:,'a4cb9a1':'1222c5e']
@@ -36,7 +36,7 @@ plot_df_commit_range = all_filenames.ix[:,'a4cb9a1':'1222c5e']
 
 ![](images/commit_range.png)
 
-This is a range of files, using
+This is a range of files:
 
 ```python
 plot_df_file_range = all_filenames[~all_filenames.index.str.contains('txt$')]
@@ -44,7 +44,7 @@ plot_df_file_range = all_filenames[~all_filenames.index.str.contains('txt$')]
 
 ![](images/file_range.png)
 
-This is combines the two filters, using
+This combines the two filters:
 
 ```python
 plot_df_commit_file_range = all_filenames.ix[:,'a4cb9a1':'1222c5e']
@@ -53,7 +53,7 @@ plot_df_commit_file_range = all_filenames.ix[:,'a4cb9a1':'1222c5e']
 
 ![](images/commit_file_range.png)
 
-This is filter on the all the state in the last commit, using
+This is a filter on all the file states in the last commit:
 
 ```python
 plot_df_state_filter = all_filenames[all_filenames[all_filenames.columns[-1]] != 'N']
